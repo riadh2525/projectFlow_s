@@ -2,10 +2,7 @@ package dz.corepulse.projectflow.model.entity;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.CurrentTimestamp;
 
@@ -15,8 +12,9 @@ import java.time.LocalDateTime;
 @Data
 @SuperBuilder
 @MappedSuperclass
-@Getter
 @AllArgsConstructor
+@NoArgsConstructor
+
 public class AbstractEntity {
 
     @Id
