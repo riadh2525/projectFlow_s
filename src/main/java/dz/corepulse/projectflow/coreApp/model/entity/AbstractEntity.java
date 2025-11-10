@@ -1,13 +1,9 @@
-package dz.corepulse.projectflow.model.entity;
+package dz.corepulse.projectflow.coreApp.model.entity;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
-import org.hibernate.annotations.CurrentTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -17,6 +13,7 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 public class AbstractEntity {
 
     @Id
@@ -32,24 +29,18 @@ public class AbstractEntity {
     @Column(name ="status")
     private String status ;
 
-    @Column(name ="priority")
-    private String priority ;
-
     @Column(name ="progress")
     private int progress ;
 
-    @CurrentTimestamp
-    private LocalDateTime dateDebut ;
-
-    @CurrentTimestamp
-    private LocalDateTime dateFin;
-
-    @Column(name = "time_left")
-    private int timeLeft;
-
     @Column(name = "created_by")
-    private String createdBy;
+    private Long createdBy;
+
+    @Column(name = "updated_by")
+    private Long updatedBy;
 
     @Column(name ="created_at")
     private LocalDateTime createdAt ;
+
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt ;
 }
