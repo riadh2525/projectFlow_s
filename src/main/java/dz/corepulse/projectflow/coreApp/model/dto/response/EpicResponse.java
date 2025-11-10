@@ -1,4 +1,4 @@
-package dz.corepulse.projectflow.model.dto.response;
+package dz.corepulse.projectflow.coreApp.model.dto.response;
 
 
 

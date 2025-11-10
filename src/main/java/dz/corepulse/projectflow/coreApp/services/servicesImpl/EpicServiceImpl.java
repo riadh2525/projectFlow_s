@@ -1,6 +1,6 @@
-package dz.corepulse.projectflow.service.Impl;
+package dz.corepulse.projectflow.coreApp.services.servicesImpl;
 
-import dz.corepulse.projectflow.service.EpicService;
+import dz.corepulse.projectflow.coreApp.services.EpicService;
 
 public class EpicServiceImpl implements EpicService {
 

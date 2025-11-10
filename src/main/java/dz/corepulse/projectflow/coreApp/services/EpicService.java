@@ -1,6 +1,6 @@
-package dz.corepulse.projectflow.service;
+package dz.corepulse.projectflow.coreApp.services;
 
-import dz.corepulse.projectflow.model.dto.response.EpicResponse;
+import dz.corepulse.projectflow.coreApp.model.dto.response.EpicResponse;
 
 import java.util.List;
 import java.util.Optional;
