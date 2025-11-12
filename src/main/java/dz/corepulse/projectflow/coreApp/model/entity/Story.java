@@ -19,9 +19,10 @@ public class Story extends AbstractEntity{
 
     @ManyToOne  // FK epic
     private Epic epic ;
+//    private Long idEpic ;
 
     @ManyToOne   //FK sprint
-     private Sprint idSprint ;
+    private Sprint  sprint ;
 
     @OneToMany(mappedBy = "story" ,fetch = FetchType.LAZY )
     private List<Task> taskList ;

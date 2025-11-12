@@ -1,11 +1,9 @@
 package dz.corepulse.projectflow.coreApp.model.dto.response;
 
-
-
-
 import lombok.Builder;
 import lombok.Data;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Builder
@@ -13,8 +11,25 @@ import java.util.List;
 
 public class EpicResponse {
 
+    private long id ;
 
-    private List<Long> story ;
+    private String name ;
+
+    private String description ;
+
+    private String status ;
+
+    private int progress ;
+
+    private String createdBy;
+
+    private String updatedBy;
+
+    private LocalDateTime createdAt ;
+
+    private LocalDateTime updatedAt ;
+
+    private List<Long> storyList ;
 
     private Long project;
 

@@ -8,7 +8,7 @@ import lombok.experimental.SuperBuilder;
 import java.util.List;
 
 @Entity
-@Table(name = "epic" ,schema="core_app")
+@Table(name = "epic" ,schema="pfe")
 @SuperBuilder
 @Getter @Setter
 @AllArgsConstructor @NoArgsConstructor
