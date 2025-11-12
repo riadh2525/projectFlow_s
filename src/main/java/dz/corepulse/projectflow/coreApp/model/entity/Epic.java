@@ -8,19 +8,17 @@ import lombok.experimental.SuperBuilder;
 import java.util.List;
 
 @Entity
-@Table(name = "epic" ,schema="pfe")
+@Table(name = "epic" ,schema="core_app")
 @SuperBuilder
-@Getter
-@AllArgsConstructor
-@NoArgsConstructor
-
+@Getter @Setter
+@AllArgsConstructor @NoArgsConstructor
 public class Epic extends AbstractEntity {
 
-    @OneToMany(mappedBy = "epic", fetch = FetchType.LAZY) // nom du champ su la table correspondante
-    private List<Long> storyList ;
+    @OneToMany(mappedBy = "epic", fetch = FetchType.LAZY)
+    private List<Story> storyList ;
 
     @ManyToOne
-//    private  Project project;
-    private Long idProject ;
+    @JoinColumn(name = "project_id")
+    private Project project ;
 
 }

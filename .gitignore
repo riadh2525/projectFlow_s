@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+### GCM (Git Credemtials Manager) Diagnose Log
+gcm.log
+git-credential-manager.log

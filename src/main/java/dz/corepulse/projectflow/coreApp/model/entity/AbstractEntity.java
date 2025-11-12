@@ -11,14 +11,12 @@ import java.time.LocalDateTime;
 @Data
 @SuperBuilder
 @MappedSuperclass
-@Getter
-@AllArgsConstructor
-@NoArgsConstructor
+@AllArgsConstructor @NoArgsConstructor
 public class AbstractEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id ;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id ;
 
     @Column(name ="name")
     private String name ;
@@ -33,10 +31,10 @@ public class AbstractEntity {
     private int progress ;
 
     @Column(name = "created_by")
-    private Long createdBy;
+    private LocalDateTime createdBy;
 
     @Column(name = "updated_by")
-    private Long updatedBy;
+    private LocalDateTime updatedBy;
 
     @Column(name ="created_at")
     private LocalDateTime createdAt ;
