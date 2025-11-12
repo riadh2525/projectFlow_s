@@ -8,22 +8,22 @@ import lombok.experimental.SuperBuilder;
 import java.util.List;
 
 @Entity
-@Table(name = "Story" ,schema = "pfe")
+@Table(name = "Story" ,schema = "core_app")
 @SuperBuilder
 @Getter
 
 public class Story extends AbstractEntity{
 
     @ManyToOne  // FK epic
-//    private Epic epic ;
-    private Long idEpic ;
+    private Epic epic ;
+//    private Long idEpic ;
 
     @ManyToOne   //FK sprint
-//    private Sprint
-     private Long idSprint ;
+    private Sprint  sprint ;
+//     private Long idSprint ;
 
     @OneToMany(mappedBy = "story" ,fetch = FetchType.LAZY )
-    private List<Long> taskList ;
+    private List<Story> taskList ;
 
 
 }

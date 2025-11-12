@@ -13,7 +13,7 @@ import org.hibernate.annotations.CurrentTimestamp;
 
 
 @Entity
-@Table(name = "project" ,schema = "pfe")
+@Table(name = "project" ,schema = "core_app")
 @SuperBuilder
 public class Project extends AbstractEntity {
 
@@ -25,6 +25,7 @@ public class Project extends AbstractEntity {
 
     @CurrentTimestamp
     private LocalDateTime startDate;
+
     @CurrentTimestamp
     private LocalDateTime endDate;
 }

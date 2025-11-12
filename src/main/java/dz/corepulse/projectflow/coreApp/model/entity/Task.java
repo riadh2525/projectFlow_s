@@ -1,5 +1,6 @@
-package dz.corepulse.projectflow.model.entity;
+package dz.corepulse.projectflow.coreApp.model.entity;
 
+import dz.corepulse.projectflow.coreApp.model.entity.AbstractEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
@@ -10,12 +11,12 @@ import lombok.experimental.SuperBuilder;
 
 @Entity
 @SuperBuilder
-@Table(name = "task" ,schema = "pfe")
+@Table(name = "task" ,schema = "core_app")
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class Task extends AbstractEntity{
+public class Task extends AbstractEntity {
 
     @ManyToOne
     private Long idStory ;

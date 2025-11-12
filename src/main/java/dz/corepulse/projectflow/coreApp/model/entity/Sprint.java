@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Table(name = "sprint" ,schema="pfe")
+@Table(name = "sprint" ,schema="core_app")
 @SuperBuilder
 @Getter
 @Setter

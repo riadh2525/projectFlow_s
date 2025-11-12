@@ -33,10 +33,10 @@ public class AbstractEntity {
     private int progress ;
 
     @Column(name = "created_by")
-    private Long createdBy;
+    private String createdBy;
 
     @Column(name = "updated_by")
-    private Long updatedBy;
+    private String updatedBy;
 
     @Column(name ="created_at")
     private LocalDateTime createdAt ;
