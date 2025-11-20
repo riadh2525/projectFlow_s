@@ -1,14 +1,16 @@
 package dz.corepulse.projectflow.coreApp.services;
 
-
-import dz.corepulse.projectflow.coreApp.model.dto.response.StoryResponse;
-
-import java.util.List;
-import java.util.Optional;
+import dz.corepulse.projectflow.coreApp.model.dto.request.StoryRequestDTO;
+import dz.corepulse.projectflow.coreApp.model.dto.response.StoryResponseDTO;
+import org.springframework.data.domain.Page;
 
 public interface StoryService {
 
-//    List<StoryResponse> getAllStory();
-//
-//    Optional<StoryResponse> getStoryById(Long id);
+    Page<StoryResponseDTO> getAllStories(int number, int size);
+
+    StoryResponseDTO createStory(StoryRequestDTO storyRequestDTO);
+
+    StoryResponseDTO updateStory(Long id, StoryRequestDTO storyRequestDTO);
+
+    void deleteStory(Long id);
 }

@@ -1,9 +1,7 @@
 package dz.corepulse.projectflow.coreApp.controllers;
 
 import dz.corepulse.projectflow.coreApp.model.dto.request.EpicRequestDTO;
-import dz.corepulse.projectflow.coreApp.model.dto.request.ProjectRequestDTO;
 import dz.corepulse.projectflow.coreApp.model.dto.response.EpicResponseDTO;
-import dz.corepulse.projectflow.coreApp.model.dto.response.ProjectResponseDTO;
 import dz.corepulse.projectflow.coreApp.services.EpicService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
