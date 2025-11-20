@@ -1,15 +1,19 @@
 package dz.corepulse.projectflow.coreApp.services;
 
-import dz.corepulse.projectflow.coreApp.model.dto.response.EpicResponse;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
-
+import dz.corepulse.projectflow.coreApp.model.dto.request.EpicRequestDTO;
+import dz.corepulse.projectflow.coreApp.model.dto.response.EpicResponseDTO;
+import org.springframework.data.domain.Page;
 
 public interface EpicService {
 
-//    List<EpicResponse> getEpics();
-//
-//    Optional<EpicResponse> getEpic(Long id);
+    //Basic CRUD operations
+    Page<EpicResponseDTO> getAllEpics(int number, int size);
+
+    EpicResponseDTO createEpic(EpicRequestDTO epicRequestDTO);
+
+    EpicResponseDTO updateEpic(Long id, EpicRequestDTO epicRequestDTO);
+
+    void deleteEpic(Long id);
+
+    //others
 }

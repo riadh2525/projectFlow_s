@@ -10,7 +10,6 @@ import org.mapstruct.Mapping;
 import org.mapstruct.Named;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Mapper(componentModel = "spring")
 public interface ProjectMapper {
@@ -24,7 +23,7 @@ public interface ProjectMapper {
     ProjectResponseDTO toDto(Project project);
 
     //Helper Methods
-    //toEntity
+        //toEntity
     @Named("IDsToEpics")
     default List<Epic> IDsToEpics(List<Long> ids) {
         if (ids == null) return null;
@@ -34,7 +33,7 @@ public interface ProjectMapper {
                     epic.setId(id);
                     return epic;
                 })
-                .collect(Collectors.toList());
+                .toList();
     }
 
     @Named("IDsToSprints")
@@ -46,16 +45,16 @@ public interface ProjectMapper {
                     sprint.setId(id);
                     return sprint;
                 })
-                .collect(Collectors.toList());
+                .toList();
     }
 
-    //toDto
+        //toDto
     @Named("epicsToIDs")
     default List<Long> epicsToIDs(List<Epic> epics) {
         if (epics == null) return null;
         return epics.stream()
                 .map(Epic::getId)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     @Named("sprintsToIDs")
@@ -63,6 +62,6 @@ public interface ProjectMapper {
         if (sprints == null) return null;
         return sprints.stream()
                 .map(Sprint::getId)
-                .collect(Collectors.toList());
+                .toList();
     }
 }

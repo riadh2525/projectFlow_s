@@ -11,18 +11,18 @@ import java.util.List;
 @Entity
 @Table(name = "epic" ,schema="core_app")
 @SuperBuilder
-@Getter @Setter
+@Data
 @AllArgsConstructor @NoArgsConstructor
 public class Epic extends AbstractEntity {
 
     @Column(name ="status")
-    private EpicStatus status ;
+    private EpicStatus status;
 
     @OneToMany(mappedBy = "epic", fetch = FetchType.LAZY)
-    private List<Story> storyList ;
+    private List<Story> storyList;
 
     @ManyToOne
     @JoinColumn(name = "project_id")
-    private Project project ;
+    private Project project;
 
 }

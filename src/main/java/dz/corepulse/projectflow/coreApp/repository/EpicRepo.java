@@ -7,5 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface EpicRepo extends JpaRepository<Epic,Long > {
+    //
 }
 

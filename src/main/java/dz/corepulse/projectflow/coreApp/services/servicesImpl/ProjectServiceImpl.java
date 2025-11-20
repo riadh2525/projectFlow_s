@@ -34,9 +34,9 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public ProjectResponseDTO updateProject(Long id, ProjectRequestDTO projectRequestDTO) {
-        Project projectInDB = projectRepo.findById(id).orElseThrow(() -> new RuntimeException("Project with id " + id + " not found"));
+        Project actual = projectRepo.findById(id).orElseThrow(() -> new RuntimeException("Project with id " + id + " not found"));
         Project updated =  projectMapper.toEntity(projectRequestDTO);
-        if(projectInDB.equals(updated)) {
+        if(actual.equals(updated)) {
             throw new RuntimeException("Nothing to update!");
         }
         updated.setId(id);

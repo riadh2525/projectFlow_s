@@ -5,7 +5,6 @@ import dz.corepulse.projectflow.coreApp.model.dto.response.ProjectResponseDTO;
 import dz.corepulse.projectflow.coreApp.services.ProjectService;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.context.properties.bind.DefaultValue;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +17,8 @@ public class ProjectController {
     private final ProjectService projectService;
 
     @GetMapping("all-projects")
-    public ResponseEntity<Page<ProjectResponseDTO>> getAllProjects(@RequestParam(defaultValue = "0") int number, @RequestParam(defaultValue = "10") int size) {
+    public ResponseEntity<Page<ProjectResponseDTO>> getAllProjects(@RequestParam(defaultValue = "0") int number,
+                                                                   @RequestParam(defaultValue = "10") int size) {
         return ResponseEntity.ok(projectService.getAllProjects(number, size));
     }
 
@@ -28,7 +28,8 @@ public class ProjectController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<ProjectResponseDTO> updateProject(@RequestParam Long id, @RequestBody ProjectRequestDTO projectRequestDTO) {
+    public ResponseEntity<ProjectResponseDTO> updateProject(@RequestParam Long id,
+                                                            @RequestBody ProjectRequestDTO projectRequestDTO) {
         return ResponseEntity.ok(projectService.updateProject(id, projectRequestDTO));
     }
 
