@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface StoryService {
 
-    List<StoryResponse> getAllStory();
-
-    Optional<StoryResponse> getStoryById(Long id);
-    }
+//    List<StoryResponse> getAllStory();
+//
+//    Optional<StoryResponse> getStoryById(Long id);
+}

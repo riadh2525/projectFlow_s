@@ -19,15 +19,15 @@ public class StoryServiceImpl implements StoryService {
     private final StoryRepo storyRepo;
     private final StoryMapper storyMapper ;
 
-    @Override
-    public List<StoryResponse> getAllStory() {
-        return storyRepo.findAll().stream()
-                .map(storyMapper::toDto)
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public Optional<StoryResponse> getStoryById(Long id) {
-        return Optional.empty();
-    }
+//    @Override
+//    public List<StoryResponse> getAllStory() {
+//        return storyRepo.findAll().stream()
+//                .map(storyMapper::toDto)
+//                .collect(Collectors.toList());
+//    }
+//
+//    @Override
+//    public Optional<StoryResponse> getStoryById(Long id) {
+//        return Optional.empty();
+//    }
 }

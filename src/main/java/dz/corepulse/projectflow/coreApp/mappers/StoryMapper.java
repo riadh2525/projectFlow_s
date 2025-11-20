@@ -16,20 +16,20 @@ import java.util.List;
         unmappedTargetPolicy = ReportingPolicy.IGNORE) //
 public interface StoryMapper {
 
-    @Mapping(target = "taskList" ,source = "taskList")
-    StoryResponse  toDto(Story story);
-
-
-    @Named("TaskToStringList")
-    default List<Long> TaskToStringList(List<Task> taskList){
-        if(taskList == null){
-           return null ;
-        }
-     return  taskList.stream()
-             .map(task -> task.getId())
-             .toList();
-    }
-
-    Story toEntity(StoryResponse req);
+//    @Mapping(target = "taskList" ,source = "taskList")
+//    StoryResponse  toDto(Story story);
+//
+//
+//    @Named("TaskToStringList")
+//    default List<Long> TaskToStringList(List<Task> taskList){
+//        if(taskList == null){
+//           return null ;
+//        }
+//     return  taskList.stream()
+//             .map(task -> task.getId())
+//             .toList();
+//    }
+//
+//    Story toEntity(StoryResponse req);
 
 }

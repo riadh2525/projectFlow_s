@@ -1,10 +1,7 @@
 package dz.corepulse.projectflow.coreApp.model.entity;
 
-import dz.corepulse.projectflow.coreApp.model.entity.AbstractEntity;
-import dz.corepulse.projectflow.coreApp.model.entity.Story;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import dz.corepulse.projectflow.coreApp.model.enums.statuses.TaskStatus;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,8 +16,10 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 public class Task extends AbstractEntity {
 
+    @Column(name ="status")
+    private TaskStatus status ;
+
     @ManyToOne
+    @JoinColumn(name = "story_id")
     private Story story ;
-
-
 }

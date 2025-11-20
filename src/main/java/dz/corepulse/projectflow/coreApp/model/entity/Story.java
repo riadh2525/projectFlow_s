@@ -1,6 +1,6 @@
 package dz.corepulse.projectflow.coreApp.model.entity;
 
-import dz.corepulse.projectflow.coreApp.model.entity.Task;
+import dz.corepulse.projectflow.coreApp.model.enums.statuses.StoryStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,11 +17,15 @@ import java.util.List;
 @AllArgsConstructor @NoArgsConstructor
 public class Story extends AbstractEntity{
 
-    @ManyToOne  // FK epic
-    private Epic epic ;
-//    private Long idEpic ;
+    @Column(name ="status")
+    private StoryStatus status ;
 
-    @ManyToOne   //FK sprint
+    @ManyToOne
+    @JoinColumn(name = "epic_id")
+    private Epic epic ;
+
+    @ManyToOne
+    @JoinColumn(name = "sprint_id")
     private Sprint  sprint ;
 
     @OneToMany(mappedBy = "story" ,fetch = FetchType.LAZY )

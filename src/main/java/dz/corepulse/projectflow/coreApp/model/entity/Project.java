@@ -1,5 +1,6 @@
 package dz.corepulse.projectflow.coreApp.model.entity;
 
+import dz.corepulse.projectflow.coreApp.model.enums.statuses.ProjectStatus;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
@@ -15,6 +16,9 @@ import org.hibernate.annotations.CurrentTimestamp;
 @SuperBuilder
 @AllArgsConstructor @NoArgsConstructor
 public class Project extends AbstractEntity {
+
+    @Column(name ="status")
+    private ProjectStatus status ;
 
     @OneToMany(mappedBy = "project" ,fetch = FetchType.LAZY)
     private List<Epic> epicList ;

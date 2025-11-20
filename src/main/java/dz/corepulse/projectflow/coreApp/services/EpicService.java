@@ -9,9 +9,7 @@ import java.util.Optional;
 
 public interface EpicService {
 
-    List<EpicResponse> getEpics();
-
-    Optional<EpicResponse> getEpic(Long id);
-
-
+//    List<EpicResponse> getEpics();
+//
+//    Optional<EpicResponse> getEpic(Long id);
 }

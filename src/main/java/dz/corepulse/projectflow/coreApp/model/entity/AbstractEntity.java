@@ -4,6 +4,7 @@ package dz.corepulse.projectflow.coreApp.model.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
+import org.hibernate.annotations.CurrentTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -24,9 +25,6 @@ public class AbstractEntity {
     @Column(name ="description")
     private String description ;
 
-    @Column(name ="status")
-    private String status ;
-
     @Column(name ="progress")
     private int progress ;
 
@@ -37,8 +35,19 @@ public class AbstractEntity {
     private String updatedBy;
 
     @Column(name ="created_at")
+    @CurrentTimestamp
     private LocalDateTime createdAt ;
 
     @Column(name = "updated_at")
+    @CurrentTimestamp
     private LocalDateTime updatedAt ;
+
+    @PrePersist
+    public void prePersist() {
+        this.createdAt = LocalDateTime.now();
+    }
+    @PreUpdate
+    public void preUpdate() {
+        this.updatedAt = LocalDateTime.now();
+    }
 }

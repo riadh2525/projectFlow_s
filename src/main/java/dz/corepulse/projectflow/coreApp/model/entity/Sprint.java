@@ -1,5 +1,6 @@
 package dz.corepulse.projectflow.coreApp.model.entity;
 
+import dz.corepulse.projectflow.coreApp.model.enums.statuses.SprintStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,11 +19,15 @@ import java.util.List;
 @AllArgsConstructor @NoArgsConstructor
 public class Sprint extends AbstractEntity {
 
+    @Column(name ="status")
+    private SprintStatus status ;
+
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "project_id")
     private Project project;
 
-    @OneToMany(mappedBy = "epic", fetch = FetchType.LAZY)
-    private List<Story> storyList ;
+    @OneToMany(mappedBy = "sprint", fetch = FetchType.LAZY)
+    private List<Story> storyList;
 
     private String goal;
 
