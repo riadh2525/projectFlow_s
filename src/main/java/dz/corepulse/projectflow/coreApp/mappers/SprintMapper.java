@@ -15,11 +15,11 @@ import java.util.stream.Collectors;
 @Mapper(componentModel = "spring")
 public interface SprintMapper {
 
-    @Mapping(source = "project.id", target = "project")
+    @Mapping(source = "project.id", target = "projectId")
     @Mapping(source = "storyList", target = "storyListIDs", qualifiedByName = "storiesToIDs")
     SprintResponseDTO toDto(Sprint sprint);
 
-    @Mapping(source = "project", target = "project", qualifiedByName = "idToProject")
+    @Mapping(source = "projectId", target = "project", qualifiedByName = "idToProject")
     @Mapping(source = "storyListIDs", target = "storyList", qualifiedByName = "idsToStories")
     Sprint toEntity(SprintRequestDTO dto);
 

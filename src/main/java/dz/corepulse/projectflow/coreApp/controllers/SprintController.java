@@ -4,11 +4,9 @@ import dz.corepulse.projectflow.coreApp.model.dto.request.SprintRequestDTO;
 import dz.corepulse.projectflow.coreApp.model.dto.response.SprintResponseDTO;
 import dz.corepulse.projectflow.coreApp.services.SprintService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/coreapp/sprint")
@@ -17,8 +15,23 @@ public class SprintController {
 
     private final SprintService sprintService;
 
+    @GetMapping("/get-sprints")
+    public ResponseEntity<Page<SprintResponseDTO>> getSprints(@RequestParam(defaultValue = "0") int number, @RequestParam(defaultValue = "10") int size) {
+        return ResponseEntity.ok(sprintService.getAllSprints(number, size));
+    }
+
     @PostMapping("/create")
     public ResponseEntity<SprintResponseDTO>  createSprint(@RequestBody SprintRequestDTO dto) {
         return ResponseEntity.ok(sprintService.createSprint(dto));
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<SprintResponseDTO> updateSprint(@RequestParam Long id, @RequestBody SprintRequestDTO dto) {
+        return ResponseEntity.ok(sprintService.updateSprint(id, dto));
+    }
+
+    @DeleteMapping("/delete")
+    public void deleteSprint(@RequestParam Long id) {
+        sprintService.deleteSprint(id);
     }
 }

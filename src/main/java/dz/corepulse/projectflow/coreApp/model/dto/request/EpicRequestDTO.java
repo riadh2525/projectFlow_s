@@ -18,8 +18,6 @@ public class EpicRequestDTO {
 
     private int progress;
 
-    private String updatedBy;
-
     private EpicStatus status;
 
     private List<Long> storyListIDs;

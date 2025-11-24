@@ -20,11 +20,7 @@ public class SprintRequestDTO {
 
     private int progress;
 
-    private String createdBy;
-
-    private String updatedBy;
-
-    private Long project;
+    private Long projectId;
 
     private List<Long> storyListIDs;
 

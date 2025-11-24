@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -12,19 +11,17 @@ import java.util.List;
 @NoArgsConstructor
 public class StoryRequestDTO {
 
-    private String name ;
+    private String name;
 
-    private String description ;
+    private String description;
 
-    private String status ;
+    private String status;
 
-    private int progress ;
+    private int progress;
 
-    private String updatedBy;
+    private Long epicId;
 
-    private Long epicId ;
+    private Long sprintId;
 
-    private Long sprintId ;
-
-    private List<Long> taskListIDs ;
+    private List<Long> taskListIDs;
 }

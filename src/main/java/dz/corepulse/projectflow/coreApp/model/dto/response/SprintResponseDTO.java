@@ -24,7 +24,11 @@ public class SprintResponseDTO {
 
     private String updatedBy;
 
-    private Long project;
+    private LocalDateTime createdAt;
+
+    private LocalDateTime updatedAt;
+
+    private Long projectId;
 
     private List<Long> storyListIDs;
 
