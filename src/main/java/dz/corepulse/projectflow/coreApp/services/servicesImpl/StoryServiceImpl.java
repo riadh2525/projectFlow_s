@@ -33,7 +33,7 @@ public class StoryServiceImpl implements StoryService {
         Story story = storyMapper.toEntity(storyRequestDTO);
         //other code here to bring the creator
 //        story.setCreatedBy();
-        return storyMapper.toDto(storyRepo.save(storyMapper.toEntity(storyRequestDTO)));
+        return storyMapper.toDto(story);
     }
 
     @Override

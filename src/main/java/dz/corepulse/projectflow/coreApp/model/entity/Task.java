@@ -22,4 +22,14 @@ public class Task extends AbstractEntity {
     @ManyToOne
     @JoinColumn(name = "story_id")
     private Story story ;
+
+    //Helper Methods
+    public Boolean isSame(Task task) {
+        if(!this.getName().equals(task.getName())) return false;
+        if(!this.getDescription().equals(task.getDescription())) return false;
+        if(this.getProgress() != task.getProgress()) return false;
+        if(!this.getStatus().equals(task.getStatus())) return false;
+        if(this.getStory().equals(task.getStory())) return false;
+        return true;
+    }
 }
