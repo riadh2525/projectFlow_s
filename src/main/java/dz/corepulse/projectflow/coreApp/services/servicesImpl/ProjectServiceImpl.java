@@ -29,24 +29,28 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public ProjectResponseDTO createProject(ProjectRequestDTO projectRequestDTO) {
-        return projectMapper.toDto(projectRepo.save(projectMapper.toEntity(projectRequestDTO)));
+        Project project = projectMapper.toEntity(projectRequestDTO);
+        //other code here to bring the creator
+//        project.setCreatedBy();
+        return projectMapper.toDto(projectRepo.save(project));
     }
 
     @Override
     public ProjectResponseDTO updateProject(Long id, ProjectRequestDTO projectRequestDTO) {
         Project actual = projectRepo.findById(id).orElseThrow(() -> new RuntimeException("Project with id " + id + " not found"));
         Project updated =  projectMapper.toEntity(projectRequestDTO);
-        if(actual.equals(updated)) {
-            throw new RuntimeException("Nothing to update!");
-        }
+        if(actual.isSame(updated)) throw new RuntimeException("Nothing to update!");
+        //other code here to bring the updater
+//        updated.setUpdatedBy();
         updated.setId(id);
-        projectRepo.save(updated);
-        return projectMapper.toDto(updated);
+        return projectMapper.toDto(projectRepo.save(updated));
     }
 
     @Override
     public void deleteProject(Long id) {
         Project project = projectRepo.findById(id).orElseThrow(() -> new RuntimeException("Project with id " + id + " not found"));
+        //other code here to bring the deleter
+//        project.setUpdatedBy();
         project.setStatus(ProjectStatus.ABANDONED);
         projectRepo.save(project);
     }

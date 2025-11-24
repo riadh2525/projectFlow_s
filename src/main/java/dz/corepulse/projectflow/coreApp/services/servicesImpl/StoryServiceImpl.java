@@ -30,6 +30,9 @@ public class StoryServiceImpl implements StoryService {
 
     @Override
     public StoryResponseDTO createStory(StoryRequestDTO storyRequestDTO) {
+        Story story = storyMapper.toEntity(storyRequestDTO);
+        //other code here to bring the creator
+//        story.setCreatedBy();
         return storyMapper.toDto(storyRepo.save(storyMapper.toEntity(storyRequestDTO)));
     }
 
@@ -37,7 +40,9 @@ public class StoryServiceImpl implements StoryService {
     public StoryResponseDTO updateStory(Long id, StoryRequestDTO storyRequestDTO) {
         Story actual = storyRepo.findById(id).orElseThrow(() -> new RuntimeException("Story with id " + id + " not found"));
         Story updated = storyMapper.toEntity(storyRequestDTO);
-        if (actual.equals(updated)) throw new RuntimeException("Story with id " + id + " already exists");
+        if (actual.isSame(updated)) throw new RuntimeException("Story with id " + id + " already exists");
+        //other code here to bring the updater
+//        updated.setUpdatedBy();
         updated.setId(id);
         return storyMapper.toDto(storyRepo.save(updated));
     }
@@ -45,6 +50,9 @@ public class StoryServiceImpl implements StoryService {
     @Override
     public void deleteStory(Long id) {
         Story story = storyRepo.findById(id).orElseThrow(() -> new RuntimeException("Story with id " + id + " not found"));
+        //other code here to bring the deleter
+//        sprint.setUpdatedBy();
         story.setStatus(StoryStatus.ANY_1);
+        storyRepo.save(story);
     }
 }

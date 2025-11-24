@@ -31,26 +31,25 @@ public class SprintServiceImpl implements SprintService {
         Sprint sprint = sprintMapper.toEntity(dto);
         //other code here to bring the creator
 //        sprint.setCreatedBy();
-        return sprintMapper.toDto(sprint);
+        return sprintMapper.toDto(sprintRepo.save(sprint));
     }
 
     @Override
     public SprintResponseDTO updateSprint(Long id, SprintRequestDTO dto) {
-        Sprint oldSprint = sprintRepo.findById(id).orElseThrow(() -> new RuntimeException("Sprint with ID: "+id+" does not exist."));
-        Sprint newSprint = sprintMapper.toEntity(dto);
-        if(oldSprint.isSame(newSprint)) {
-            throw new RuntimeException("Nothing to change.");
-        }
+        Sprint actual = sprintRepo.findById(id).orElseThrow(() -> new RuntimeException("Sprint with ID: "+id+" does not exist."));
+        Sprint updated = sprintMapper.toEntity(dto);
+        if(actual.isSame(updated)) throw new RuntimeException("Nothing to update!");
         //other code here to bring the updater
-//        newSprint.setUpdatedBy();
-        return sprintMapper.toDto(sprintRepo.save(newSprint));
+//        updated.setUpdatedBy();
+        updated.setId(id);
+        return sprintMapper.toDto(sprintRepo.save(updated));
     }
 
     @Override
     public void deleteSprint(Long id) {
-        Sprint sprint = sprintRepo.findById(id).orElseThrow(() -> new RuntimeException("Sprint with ID: "+id+" does not exist."));
+        Sprint sprint = sprintRepo.findById(id).orElseThrow(() -> new RuntimeException("Spring with id "+id+" not found"));
         //other code here to bring the deleter
-//        newSprint.setUpdatedBy();
+//        sprint.setUpdatedBy();
         sprint.setStatus(SprintStatus.ANY_1);
         sprintRepo.save(sprint);
     }

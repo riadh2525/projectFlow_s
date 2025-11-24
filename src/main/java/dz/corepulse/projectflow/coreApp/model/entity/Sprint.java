@@ -43,13 +43,13 @@ public class Sprint extends AbstractEntity {
         if(!this.getName().equals(sprint.getName())) return false;
         if(!this.getDescription().equals(sprint.getDescription())) return false;
         if(!this.getStatus().equals(sprint.getStatus())) return false;
-        if(!(this.getProgress() == sprint.getProgress()))  return false;
+        if(this.getProgress() != sprint.getProgress())  return false;
         if(!this.getProject().equals(sprint.getProject())) return false;
         if(!this.getStoryList().equals(sprint.getStoryList())) return false;
         if(!this.getGoal().equals(sprint.getGoal())) return false;
         if(this.getCapacity() != sprint.getCapacity()) return false;
-        if(this.getStartDate().isEqual(sprint.getStartDate())) return false;
-        if(this.getEndDate().isEqual(sprint.getEndDate())) return false;
+        if(this.getStartDate().equals(sprint.getStartDate())) return false;
+        if(this.getEndDate().equals(sprint.getEndDate())) return false;
         return true;
     }
 }

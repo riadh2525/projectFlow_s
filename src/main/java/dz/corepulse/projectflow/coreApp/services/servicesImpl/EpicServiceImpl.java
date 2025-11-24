@@ -28,14 +28,19 @@ public class EpicServiceImpl implements EpicService {
 
     @Override
     public EpicResponseDTO createEpic(EpicRequestDTO epicRequestDTO) {
-        return epicMapper.toDto(epicRepo.save(epicMapper.toEntity(epicRequestDTO)));
+        Epic epic = epicMapper.toEntity(epicRequestDTO);
+        //other code here to bring the creator
+//        epic.setCreatedBy();
+        return epicMapper.toDto(epicRepo.save(epic));
     }
 
     @Override
     public EpicResponseDTO updateEpic(Long id, EpicRequestDTO epicRequestDTO) {
         Epic actual = epicRepo.findById(id).orElseThrow(() -> new RuntimeException("Epic with id " + id + " not found"));
         Epic updated = epicMapper.toEntity(epicRequestDTO);
-        if(actual.equals(updated)) throw  new RuntimeException("Nothing to update!");
+        if(actual.isSame(updated)) throw  new RuntimeException("Nothing to update!");
+        //other code here to bring the updater
+//        updated.setUpdatedBy();
         updated.setId(id);
         return epicMapper.toDto(epicRepo.save(updated));
     }
@@ -43,6 +48,9 @@ public class EpicServiceImpl implements EpicService {
     @Override
     public void deleteEpic(Long id) {
         Epic epic = epicRepo.findById(id).orElseThrow(() -> new RuntimeException("Epic with id " + id + " not found"));
+        //other code here to bring the deleter
+//        sprint.setUpdatedBy();
         epic.setStatus(EpicStatus.ANY_1);
+        epicRepo.save(epic);
     }
 }

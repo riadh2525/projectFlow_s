@@ -33,4 +33,17 @@ public class Project extends AbstractEntity {
     @Column(name = "end_date")
     @CurrentTimestamp
     private LocalDateTime endDate;
+
+    //Helper Methods
+    public Boolean isSame(Project project) {
+        if(!this.getName().equals(project.getName())) return false;
+        if(!this.getDescription().equals(project.getDescription())) return false;
+        if(this.getProgress() != project.getProgress()) return false;
+        if(!this.getStatus().equals(project.getStatus())) return false;
+        if(!this.getEpicList().equals(project.getEpicList())) return false;
+        if(!this.getSprintList().equals(project.getSprintList())) return false;
+        if(!this.getStartDate().equals(project.getStartDate())) return false;
+        if(!this.getEndDate().equals(project.getEndDate())) return false;
+        return true;
+    }
 }
