@@ -9,6 +9,8 @@ public interface EpicService {
     //Basic CRUD operations
     Page<EpicResponseDTO> getAllEpics(int number, int size);
 
+    EpicResponseDTO getEpicById(Long id);
+
     EpicResponseDTO createEpic(EpicRequestDTO epicRequestDTO);
 
     EpicResponseDTO updateEpic(Long id, EpicRequestDTO epicRequestDTO);

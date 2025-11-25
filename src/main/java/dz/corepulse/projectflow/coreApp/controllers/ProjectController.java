@@ -22,6 +22,11 @@ public class ProjectController {
         return ResponseEntity.ok(projectService.getAllProjects(number, size));
     }
 
+    @GetMapping("/project-by-id")
+    public ResponseEntity<ProjectResponseDTO> getProjectById(@RequestParam Long id) {
+        return ResponseEntity.ok(projectService.getProjectById(id));
+    }
+
     @PostMapping("/create")
     public ResponseEntity<ProjectResponseDTO> createProject(@RequestBody ProjectRequestDTO projectRequestDTO) {
         return ResponseEntity.ok(projectService.createProject(projectRequestDTO));

@@ -20,6 +20,11 @@ public class TaskController {
         return ResponseEntity.ok(taskService.getAllTasks(number, size));
     }
 
+    @GetMapping("/task-by-id")
+    public ResponseEntity<TaskResponseDTO> getTaskById(Long id) {
+        return ResponseEntity.ok(taskService.getTaskById(id));
+    }
+
     @PostMapping("/create")
     public ResponseEntity<TaskResponseDTO> createTask(@RequestBody TaskRequestDTO taskRequestDTO) {
         return ResponseEntity.ok(taskService.createTask(taskRequestDTO));

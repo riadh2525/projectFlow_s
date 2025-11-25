@@ -13,6 +13,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class ProjectServiceImpl implements ProjectService {
@@ -25,6 +27,12 @@ public class ProjectServiceImpl implements ProjectService {
         Pageable pageable = PageRequest.of(number, size);
         return projectRepo.findAll(pageable)
                 .map(projectMapper::toDto);
+    }
+
+    @Override
+    public ProjectResponseDTO getProjectById(Long id) {
+        Optional<Project> project = projectRepo.findById(id);
+        return project.map(projectMapper::toDto).orElse(null);
     }
 
     @Override

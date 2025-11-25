@@ -21,6 +21,11 @@ public class StoryController {
         return ResponseEntity.ok(storyService.getAllStories(number, size));
     }
 
+    @GetMapping("/story-by-id")
+    public ResponseEntity<StoryResponseDTO> getStoryById(@RequestParam long id) {
+        return ResponseEntity.ok(storyService.getStoryById(id));
+    }
+
     @PostMapping("/create")
     public ResponseEntity<StoryResponseDTO> createStory(@RequestBody StoryRequestDTO storyRequestDTO) {
         return ResponseEntity.ok(storyService.createStory(storyRequestDTO));

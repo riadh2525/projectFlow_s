@@ -13,6 +13,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class EpicServiceImpl implements EpicService {
@@ -24,6 +26,12 @@ public class EpicServiceImpl implements EpicService {
     public Page<EpicResponseDTO> getAllEpics(int number, int size) {
         Pageable pageable = PageRequest.of(number, size);
         return epicRepo.findAll(pageable).map(epicMapper::toDto);
+    }
+
+    @Override
+    public EpicResponseDTO getEpicById(Long id) {
+        Optional<Epic> epic = epicRepo.findById(id);
+        return epic.map(epicMapper::toDto).orElse(null);
     }
 
     @Override

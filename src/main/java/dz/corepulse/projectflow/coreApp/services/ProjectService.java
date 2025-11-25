@@ -10,6 +10,8 @@ public interface ProjectService {
     //default CRUD operations
     Page<ProjectResponseDTO> getAllProjects(int number, int size);
 
+    ProjectResponseDTO getProjectById(Long id);
+
     ProjectResponseDTO createProject(ProjectRequestDTO projectRequestDTO);
 
     ProjectResponseDTO updateProject(Long id, ProjectRequestDTO projectRequestDTO);

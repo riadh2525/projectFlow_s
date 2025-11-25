@@ -13,6 +13,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -26,6 +29,12 @@ public class StoryServiceImpl implements StoryService {
     public Page<StoryResponseDTO> getAllStories(int number, int size) {
         Pageable pageable = PageRequest.of(number, size);
         return storyRepo.findAll(pageable).map(storyMapper::toDto);
+    }
+
+    @Override
+    public StoryResponseDTO getStoryById(Long id) {
+        Optional<Story> story = storyRepo.findById(id);
+        return story.map(storyMapper::toDto).orElse(null);
     }
 
     @Override

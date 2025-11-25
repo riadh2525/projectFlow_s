@@ -20,6 +20,11 @@ public class SprintController {
         return ResponseEntity.ok(sprintService.getAllSprints(number, size));
     }
 
+    @GetMapping("/sprint-by-id")
+    public ResponseEntity<SprintResponseDTO> getSprintById(@RequestParam long id) {
+        return ResponseEntity.ok(sprintService.getSprintById(id));
+    }
+
     @PostMapping("/create")
     public ResponseEntity<SprintResponseDTO>  createSprint(@RequestBody SprintRequestDTO dto) {
         return ResponseEntity.ok(sprintService.createSprint(dto));

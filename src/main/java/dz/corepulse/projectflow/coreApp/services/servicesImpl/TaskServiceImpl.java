@@ -12,6 +12,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -24,6 +27,12 @@ public class TaskServiceImpl implements TaskService {
     public Page<TaskResponseDTO> getAllTasks(int number, int size) {
         Pageable pageable = PageRequest.of(number, size);
         return taskRepo.findAll(pageable).map(taskMapper::toDto);
+    }
+
+    @Override
+    public TaskResponseDTO getTaskById(Long id) {
+        Optional<Task> task = taskRepo.findById(id);
+        return task.map(taskMapper::toDto).orElse(null);
     }
 
     @Override
